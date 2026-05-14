@@ -10,10 +10,13 @@
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
-<audio id="bgmusic" controls loop>
+<audio id="bgmusic" loop>
   <source src="music.mp3" type="audio/mpeg">
-  Your browser does not support audio.
 </audio>
+
+<button onclick="document.getElementById('bgmusic').play()">
+▶ Play Music
+</button>
     }body {
   overflow-x: hidden;
   background: black;
