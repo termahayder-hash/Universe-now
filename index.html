@@ -10,6 +10,35 @@
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
+
+<button onclick="document.getElementById('bgmusic').play()" 
+style="
+position:fixed;
+top:20px;
+right:20px;
+z-index:9999;
+padding:10px 20px;
+border-radius:20px;
+border:1px solid white;
+background:rgba(0,0,0,0.5);
+color:white;
+backdrop-filter:blur(10px);
+">
+▶ Play Music
+</button>
+
+<audio id="bgmusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+
+
+      
+      
+
+
+
+      
     }body {
   overflow-x: hidden;
   background: black;
