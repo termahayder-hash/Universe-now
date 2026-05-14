@@ -1,0 +1,394 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinematic Love Universe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }body {
+  overflow-x: hidden;
+  background: black;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.05), rgba(0,0,0,0.95));
+  z-index: -2;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  max-width: 900px;
+  text-align: center;
+  z-index: 5;
+  animation: fadeIn 2s ease;
+}
+
+h1 {
+  font-size: clamp(3rem, 7vw, 7rem);
+  font-family: 'Cinzel', serif;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 0 0 30px rgba(255,255,255,0.6);
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+p {
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  line-height: 2;
+  color: rgba(255,255,255,0.85);
+  margin-top: 15px;
+}
+
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 0 0 50px rgba(255,255,255,0.08);
+}
+
+.hero {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.9));
+}
+
+.chapter1 {
+  background: linear-gradient(135deg, rgba(15,15,40,0.9), rgba(0,0,0,0.95));
+}
+
+.chapter2 {
+  background: linear-gradient(135deg, rgba(50,10,10,0.9), rgba(0,0,0,0.95));
+}
+
+.chapter3 {
+  background: linear-gradient(135deg, rgba(10,20,60,0.9), rgba(0,0,0,0.95));
+}
+
+.chapter4 {
+  background: linear-gradient(135deg, rgba(70,40,10,0.9), rgba(0,0,0,0.95));
+}
+
+.chapter5 {
+  background: linear-gradient(135deg, rgba(20,50,30,0.9), rgba(0,0,0,0.95));
+}
+
+.final {
+  background: radial-gradient(circle at center, rgba(255,255,255,0.08), black 70%);
+}
+
+.floating {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  animation: float 12s infinite ease-in-out;
+  filter: blur(2px);
+}
+
+.letter {
+  width: 180px;
+  height: 120px;
+  margin: 30px auto;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: pulse 3s infinite;
+}
+
+.letter .base {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+}
+
+.letter .flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: rgba(255,255,255,0.15);
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top;
+  animation: openLetter 5s infinite alternate;
+}
+
+.quote {
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  font-style: italic;
+  color: rgba(255,255,255,0.95);
+  margin-top: 30px;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+.btn {
+  margin-top: 35px;
+  display: inline-block;
+  padding: 15px 40px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: white;
+  text-decoration: none;
+  transition: 0.4s;
+  backdrop-filter: blur(10px);
+  letter-spacing: 2px;
+}
+
+.btn:hover {
+  transform: scale(1.08);
+  background: rgba(255,255,255,0.1);
+  box-shadow: 0 0 30px rgba(255,255,255,0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-40px);
+  }
+}
+
+@keyframes pulse {
+  0%,100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes openLetter {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
+
+.stars {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 5s infinite alternate;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ending {
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-family: 'Cinzel', serif;
+  text-transform: uppercase;
+  line-height: 1.5;
+  animation: fadeIn 3s ease;
+}
+
+.music-note {
+  position: absolute;
+  color: rgba(255,255,255,0.3);
+  font-size: 2rem;
+  animation: float 10s infinite ease-in-out;
+}
+
+  </style>
+</head>
+<body><canvas id="bg"></canvas>
+
+<div class="overlay"></div><section class="hero">
+  <div class="content glass">
+    <h1>Celestial Memories</h1>
+    <p>
+      A cinematic universe built from emotions, memories, letters, dreams and promises.
+      Every chapter is another dimension.
+    </p>
+    <div class="letter">
+      <div class="base"></div>
+      <div class="flap"></div>
+    </div>
+    <a href="#chapter1" class="btn">Enter The Universe</a>
+  </div>
+</section><section class="chapter1" id="chapter1">
+  <div class="floating" style="width:180px;height:180px;top:10%;left:10%;"></div>
+  <div class="floating" style="width:120px;height:120px;bottom:10%;right:10%;"></div>  <div class="content glass">
+    <h2>The First Signal</h2>
+    <p>
+      Some people arrive quietly...
+      but somehow change the entire atmosphere of your world.
+    </p>
+    <div class="quote">“Maybe destiny looked like a simple hello.”</div>
+  </div>
+</section><section class="chapter2">
+  <div class="content glass">
+    <h2>Midnight Conversations</h2>
+    <p>
+      The city sleeps.
+      But somewhere between silence and rain,
+      your name keeps echoing.
+    </p>
+    <div class="quote">“I still replay our conversations like scenes from a movie.”</div>
+  </div>
+</section><section class="chapter3">
+  <div class="content glass">
+    <h2>Lost Between Stars</h2>
+    <p>
+      Maybe distance only exists for people.
+      Not for memories.
+      Not for feelings.
+    </p>
+    <div class="quote">“Even galaxies couldn’t make me forget you.”</div>
+  </div>
+</section><section class="chapter4">
+  <div class="content glass">
+    <h2>Languages Of The Heart</h2>
+    <p>
+      Ti amo.
+      Te quiero.
+      Nhebek barcha.
+      Je t’aime.
+    </p>
+    <div class="quote">“Different languages. Same heartbeat.”</div>
+  </div>
+</section><section class="chapter5">
+  <div class="content glass">
+    <h2>The Future We Imagined</h2>
+    <p>
+      Maybe one day,
+      we will look at the sunset together
+      and laugh at how destiny brought us here.
+    </p>
+    <div class="quote">“Some stories deserve eternity.”</div>
+  </div>
+</section><section class="final">
+  <div class="content">
+    <div class="ending">
+      YOU WERE NEVER<br>
+      JUST A MEMORY.<br><br>
+      YOU BECAME<br>
+      A WHOLE UNIVERSE.
+    </div>
+  </div>
+</section><script>
+  const canvas = document.getElementById('bg');
+  const ctx = canvas.getContext('2d');
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  let particles = [];
+
+  for(let i = 0; i < 150; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 2,
+      speed: Math.random() * 0.5 + 0.2
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    ctx.fillStyle = 'white';
+
+    particles.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+      ctx.fill();
+
+      p.y += p.speed;
+
+      if(p.y > canvas.height) {
+        p.y = 0;
+        p.x = Math.random() * canvas.width;
+      }
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  document.addEventListener('mousemove', e => {
+    const glow = document.createElement('div');
+
+    glow.style.position = 'fixed';
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+    glow.style.width = '10px';
+    glow.style.height = '10px';
+    glow.style.borderRadius = '50%';
+    glow.style.background = 'rgba(255,255,255,0.5)';
+    glow.style.pointerEvents = 'none';
+    glow.style.zIndex = '999';
+    glow.style.filter = 'blur(5px)';
+
+    document.body.appendChild(glow);
+
+    setTimeout(() => {
+      glow.remove();
+    }, 300);
+  });
+</script></body>
+  </html>
