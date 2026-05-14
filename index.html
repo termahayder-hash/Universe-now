@@ -10,14 +10,19 @@
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
+    }body {
+
+<button onclick="startMusic()">▶ Start Experience</button>
+
 <audio id="bgmusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<button onclick="document.getElementById('bgmusic').play()">
-▶ Play Music
-</button>
-    }body {
+<script>
+function startMusic() {
+  document.getElementById("bgmusic").play();
+}
+</script>  
   overflow-x: hidden;
   background: black;
   font-family: 'Poppins', sans-serif;
